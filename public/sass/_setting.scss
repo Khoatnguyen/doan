@@ -1,0 +1,63 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&family=Roboto&display=swap');
+
+
+// ***********************************************
+// 共通変数設定
+//
+// ページで数値が異なる場合は、各scss上で上書きして利用してください。
+// 例）$bigPcViewport: 1200px;
+// 「!default」をとった形でそのscss上でのみ上書きが可能。
+// ***********************************************
+
+
+// Viewport
+// -----------------------------------------------
+// BIGPC -> $bigPcViewport以上
+// PC -> $pcViewport以上
+// SP and Tablet => $pcViewport未満
+// Tablet -> $pcViewport未満 $tabViewport以上
+// SP -> $spViewport以下
+$bigPcViewport: 1280px !default;
+$pcViewport: 1024px !default;
+$tabViewport: 768px !default;
+$spViewport: 767px !default;
+
+// Width
+// -----------------------------------------------
+// PC 基準width
+$base_width: 1200px !default;
+// SP 基準width
+$sp_base_width: 90% !default;
+
+// Fonts
+// -----------------------------------------------
+// 共通 line-height
+$base_lineHeight: 1.6 !default;
+// 共通 font-size 初期値
+$base_fontSize: 14 !default;
+// 共通 font-size 単位 初期値
+$font_unit: px !default;
+// 明朝系 font-family
+$Mincho: "Yu Mincho", YuMincho, serif !default;
+// ゴシック系 font-family
+$Gothic: 'Yu Gothic', YuGothic, 'メイリオ', Meiryo, sans-serif !default;
+
+@font-face {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+// Color
+// -----------------------------------------------
+// 共通 サイトメインカラー
+$base_color: #112E7A !default;
+// 共通 サイトメインフォントカラー
+$base_fontColor: #1E429F !default;

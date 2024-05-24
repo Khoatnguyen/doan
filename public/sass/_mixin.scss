@@ -1,0 +1,344 @@
+@charset "utf-8";
+@import "setting";
+
+// mixins
+// ------------------------------------------------------------------
+@mixin fs($size,$unit:$font_unit) {
+	font-size: $size + $unit;
+}
+@mixin font-family($type:Gothic){
+	@if $type == Gothic {
+		font-family: $Gothic;
+	}
+	@else if $type == Mincho {
+		font-family: $Mincho;
+		@media all and (-ms-high-contrast:none) {
+			font-family: YuGothic,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+		}
+	}
+	@else {
+		font-family: $type;
+	}
+}
+@mixin linkColor($color:#000){
+	color	:	#{$color};
+	&:visited,
+	&:focus,
+	&:active{
+		color: #{$color};
+	}
+}
+@mixin placeholderColor($color:#ccc) {
+	&::-webkit-input-placeholder {
+		color: $color;
+	}
+	&:-moz-placeholder {
+		color: $color;
+		opacity: 1;
+	}
+	&::-moz-placeholder {
+		color: $color;
+		opacity: 1;
+	}
+	&:-ms-input-placeholder {
+		color: $color;
+	}
+}
+
+
+@mixin inputReset(){
+	padding: 0;
+	margin: 0;
+	border: none;
+	background-color: transparent;
+	appearance: none;
+}
+
+@mixin appearance($param:none){
+	appearance: $param;
+}
+
+
+
+// @include display-flex;
+@mixin display-flex {
+	display: flex;
+}
+
+// flex-direction
+// - row            : row
+// - row-reverse    : row-reverse
+// - column         : column
+// - column-reverse : column-reverse
+@mixin flex-direction($direction:row) {
+	$row: row;
+	$row-reverse: row-reverse;
+	$column: column;
+	$column-reverse: column-reverse;
+	@if $direction == row {
+		flex-direction: $row;
+	} @else if $direction == row-reverse {
+		flex-direction: $row-reverse;
+	} @else if $direction == column {
+		flex-direction: $column;
+	} @else if $direction == column-reverse {
+		flex-direction: $column-reverse;
+	}
+}
+
+
+// align-items（基本：stretch）
+// - flex-start : flex-start
+// - flex-end   : flex-end
+// - center     : center
+// - baseline   : baseline
+// - stretch    : stretch
+@mixin align-items($align:stretch){
+	$flex-align: "";
+	$box-align: "";
+	@if $align == "center" {
+		$flex-align: center;
+		$box-align: center;
+	} @else if $align == "flex-start" {
+		$flex-align: flex-start;
+		$box-align: start;
+	} @else if $align == "flex-end" {
+		$flex-align: flex-end;
+		$box-align: end;
+	} @else if $align == "baseline" {
+		$flex-align: baseline;
+		$box-align: baseline;
+	} @else if $align == "stretch" {
+		$flex-align: stretch;
+		$box-align: stretch;
+	}
+	align-items: $flex-align;
+}
+
+// justify-content（基本：space-between）
+// - center        : center
+// - flex-start    : flex-start
+// - flex-end      : flex-end
+// - space-between : space-between
+@mixin justify-content($pack:space-between) {
+	$flex-content: "";
+	$flex-pac: "";
+	$flex-ms-pack: "";
+	@if $pack == "center" {
+		$flex-content: center;
+		$flex-ms-pack: center;
+		$flex-pac: center;
+	} @else if $pack == "flex-start" {
+		$flex-content: flex-start;
+		$flex-ms-pack: start;
+		$flex-pac: start;
+	} @else if $pack == "flex-end" {
+		$flex-content: flex-end;
+		$flex-ms-pack: end;
+		$flex-pac: end;
+	} @else if $pack == "space-between" {
+		$flex-content: space-between;
+		$flex-ms-pack: justify;
+		$flex-pac: justify;	
+	} @else if $pack == "space-around" {
+		$flex-content: space-around;
+		$flex-ms-pack: distribute;
+		$flex-pac: justify;
+	}
+	justify-content: $flex-content;
+}
+
+// 複数行になったときの揃え方
+// align-content（基本：stretch）
+// - flex-start    : flex-start
+// - flex-end      : flex-end
+// - center        : center
+// - space-between : space-between
+// - space-around  : space-around
+// - stretch       : stretch
+@mixin align-content($line:center) {
+	$align-content: "";
+	$flex-ms-line-pack:"";
+	
+	@if $line == flex-start {
+		$flex-ms-line-pack: start;
+		$align-content: flex-start;
+	}
+	@else if $line == flex-end {
+		$flex-ms-line-pack: end;
+		$align-content: flex-end;
+	}
+	@else if $line == center {
+		$flex-ms-line-pack: center;
+		$align-content: center;
+	}
+	@else if $line == space-between {
+		$flex-ms-line-pack: justify;
+		$align-content: space-between;
+	}
+	@else if $line == space-around {
+		$flex-ms-line-pack: distribute;
+		$align-content: space-around;
+	}
+	@else if $line == stretch {
+		$flex-ms-line-pack: distribute;
+		$align-content: space-around;
+	}
+	@else {
+		$flex-ms-line-pack: stretch;
+		$align-content: stretch;
+	}
+	align-content: $align-content;
+}
+
+// flex-wrap（基本：nowrap）
+// - wrap : wrap
+// - nowrap : nowrap
+@mixin flex-wrap($wrap:wrap) {
+	@if $wrap == wrap {
+		flex-wrap: wrap;
+	}
+	@else {
+		flex-wrap: nowrap;
+	}
+}
+
+// flex-wrap（基本：nowrap）
+@mixin order($num) {
+	order: $num;
+}
+
+
+@mixin box-sizing($type:border-box){
+	box-sizing:$type;
+}
+
+@mixin border-radius($val){
+	border-radius:$val;
+}
+
+@mixin background-size($val){
+	background-size:$val;
+}
+
+@mixin box-shadow($val){
+	box-shadow: $val;
+}
+
+@mixin rotate($val){
+	transform: rotate(#{$val});
+}
+
+@mixin scale($val){
+	transform: scale(#{$val});
+}
+
+@mixin scaleX($val){
+	transform: scaleX(#{$val});
+}
+
+@mixin scaleY($val){
+	transform: scaleY(#{$val});
+}
+
+@mixin translate($flg:true,$importantflg:false,$xpos:0,$ypos:0,$zpos:0){
+	@if $flg == true {
+		@if $importantflg == false{
+			transform: translate3d($xpos, $ypos, $zpos);
+		}
+		@else{
+			transform: translate3d($xpos, $ypos, $zpos)!important;
+		}
+	}
+	@else {
+		@if $importantflg == false{
+			transform: translate($xpos, $ypos);
+		}
+		@else{
+			transform: translate($xpos, $ypos)!important;
+		}
+	}
+}
+@mixin translateX($pos:0,$importantflg:false){
+	@if $importantflg == false{
+		transform: translateX($pos);
+	}
+	@else{
+		transform: translateX($pos)!important;
+	}
+}
+@mixin translateY($pos:0,$importantflg:false){
+	@if $importantflg == false{
+		transform: translateY($pos);
+	}
+	@else{
+		transform: translateY($pos)!important;
+	}
+}
+@mixin translateZ($pos:0,$importantflg:false){
+	@if $importantflg == false{
+		transform: translateZ($pos);
+	}
+	@else{
+		transform: translateZ($pos)!important;
+	}
+}
+
+@mixin opacity($opacity:0.6) {
+	opacity: $opacity;
+}
+
+@mixin calc($prop,$formula){
+	#{$prop}:calc( #{$formula} ) ;
+}
+
+
+// 複数指定 @include trans($prop:"background-color, color");
+@mixin trans($prop:all,$time:0.3s,$anime:ease,$delay:0s){
+	transition-property: #{$prop};
+	transition-duration: #{$time};
+	transition-timing-function: #{$anime};
+	transition-delay: #{$delay};
+}
+
+@mixin grad($topColor:#fff,$bottomColor:#ccc){
+	background: linear-gradient($topColor, $bottomColor);
+}
+@mixin gradPos($topColor:#fff,$topPos:0,$bottomColor:#000,$bottomPos:100){
+	background: linear-gradient(to bottom, $topColor ($topPos * 1%), $bottomColor ($bottomPos * 1%));
+}
+// /* 横grad */
+@mixin gradSidePos($leftColor:#fff,$leftPos:0,$rightColor:#000,$rightPos:100){
+	background: linear-gradient(to right, $leftColor ($leftPos * 1%), $rightColor ($rightPos * 1%));
+}
+// /* 斜めgrad */
+@mixin gradSlanting($topColor:#fff,$bottomColor:#ccc){
+	background:linear-gradient(to right bottom, $topColor, $bottomColor);
+}
+
+
+// media queries
+@mixin bigPc{
+	@media only screen and (min-width:#{$bigPcViewport}){ @content; }
+}
+@mixin pc{
+	@media only screen and (min-width:#{$pcViewport}){ @content; }
+}
+@mixin spTab{
+	$num: ($pcViewport - 1px);
+	@media only screen and (max-width:#{$num}){ @content; }
+}
+@mixin tablet{
+	$num: ($pcViewport - 1px);
+	@media only screen and (min-width:#{($tabViewport)}) and (max-width:#{$num}){ @content; }
+}
+@mixin mobile{
+	@media only screen and (max-width:#{$spViewport}){ @content; }
+}
+
+@mixin retina{
+	@media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 2dppx){ @content; }
+}
+
+
+

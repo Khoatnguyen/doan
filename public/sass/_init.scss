@@ -1,0 +1,157 @@
+@charset "utf-8";
+
+html{
+	font-size: 62.5%;
+}
+body{
+	@include fs($base_fontSize);
+	-webkit-text-size-adjust: 100%;
+	background-color: #ffffff;
+}
+#wrap{
+	@include fs($base_fontSize);
+}
+a{
+	@include linkColor($base_fontColor);
+}
+img{
+	max-width: 100%;
+	height: auto;
+	vertical-align: top;
+}
+
+// Common --
+// ----------------------------------------------
+.inner{
+	width: $base_width;
+	margin-left: auto;
+	margin-right: auto;
+	@include tablet{
+		width: $sp_base_width;
+	}
+	@include mobile{
+		width: $sp_base_width;
+	}
+}
+@include pc{
+	.flL{
+		float: left;
+	}
+	.flR{
+		float: right;
+	}
+	.hoverOpacity{
+		@include trans($prop:opacity);
+		&:hover{
+			@include opacity(0.8);
+		}
+	}
+	.pcH{
+		display: none !important;
+	}
+}
+@include spTab{
+	.spTabH{
+		display: none !important;
+	}
+}
+@include tablet{
+	.tabH{
+		display: none !important;
+	}
+}
+@include mobile{
+	.spH{
+		display: none !important;
+	}
+}
+@mixin media($width) {
+    @media (min-width: #{$width}px) {
+        @content;
+    }
+}
+@mixin rotate($deg) {
+    -webkit-transform: rotate($deg);
+    -moz-transform: rotate($deg);
+    -ms-transform: rotate($deg);
+    -o-transform: rotate($deg);
+    transform: rotate($deg);
+}
+
+@mixin transition($per, $s) {
+    -webkit-transition: $per $s;
+    -moz-transition: $per $s;
+    -ms-transition: $per $s;
+    -o-transition: $per $s;
+    transition: $per $s;
+}
+
+@mixin scale($s) {
+    -webkit-transform: scale($s);
+    -moz-transform: scale($s);
+    -ms-transform: scale($s);
+    transform: scale($s);
+}
+
+@mixin transform($transform) {
+    -webkit-transform: $transform;
+    -moz-transform: $transform;
+    -ms-transform: $transform;
+    -o-transform: $transform;
+    transform: $transform;
+}
+.alignL{
+	text-align: left;
+}
+.alignC{
+	text-align: center;
+}
+.alignR{
+	text-align: right;
+}
+@include tablet{
+	.tabAlignL{
+		text-align: left;
+	}
+	.tabAlignC{
+		text-align: center;
+	}
+	.tabAlignR{
+		text-align: right;
+	}
+}
+@include mobile{
+	.spAlignL{
+		text-align: left;
+	}
+	.spAlignC{
+		text-align: center;
+	}
+	.spAlignR{
+		text-align: right;
+	}
+}
+
+// Fonts --
+// ----------------------------------------------
+.required{
+	color: #c00;
+	@include fs(10);
+	font-weight: bold;
+}
+.bold{
+	font-weight: bold;
+}
+
+// Tab --
+// ----------------------------------------------
+.tabBox{
+	width: 100%;
+	display: none;
+	&.active{
+		display: block;
+	}
+}
+.d-flex{
+	display: flex;
+}

@@ -1,0 +1,1001 @@
+@charset "utf-8";
+@import "mixin";
+@import "init";
+@import "motion";
+@import "header";
+
+//.button {
+//	background: $base_color;
+//	color: #ffffff !important;
+//	font-size: 30px;
+//	padding: 30px;
+//	text-align: center;
+//	-webkit-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.16);
+//	-moz-box-shadow:    5px 5px 10px 0px rgba(0, 0, 0, 0.16);
+//	box-shadow:         5px 5px 10px 0px rgba(0, 0, 0, 0.16);
+//	display: inline-block;
+//    @include trans();
+//	&:hover {
+//		transform: scale(1.03);
+//		-webkit-box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+//		-moz-box-shadow:    10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+//		box-shadow:         10px 10px 10px 0px rgba(0, 0, 0, 0.2);
+//	}
+//	&.circle {
+//		border-radius: 100px;
+//	}
+//}
+//
+//// header --
+//// ----------------------------------------------
+//#headWrap{
+//	width: calc(100% - 50px);
+//	height: 100px;
+//	background-color: #ffffff;
+//	-webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.58);
+//	-moz-box-shadow:    0px 0px 10px 0px rgba(0, 0, 0, 0.58);
+//	box-shadow:         0px 0px 10px 0px rgba(0, 0, 0, 0.58);
+//	margin-top: 65px;
+//	position: fixed;
+//	z-index: 9999;
+//	-webkit-transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+//    transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+//	#header {
+//		display: flex;
+//		align-items: center;
+//		height: 100px;
+//		padding: 0 0 0 40px;
+//		position: relative;
+//		background: red;
+//		.brand {
+//			display: inline-block;
+//			margin: 0 40px 0 0;
+//			img {
+//				width: 227px;
+//			}
+//		}
+//		.slogan {
+//			font-family: $Gothic;
+//			font-size: 18px;
+//			font-weight: 700;
+//			color: #1A1311;
+//			line-height: 1.3;
+//		}
+//	}
+//
+//	.sp-nav {
+//		background-color: #091E38;
+//		position: absolute;
+//		right: 0;
+//		height: 100px;
+//		width: 155px;
+//		display: flex;
+//		align-items: center;
+//		justify-content: space-evenly;
+//		.h-phone {
+//			display: inline-block;
+//			width: 39px;
+//			height: 39px;
+//			background: url('../images/ico-phone-w-line.svg') no-repeat;
+//			background-size: 39px;
+//			transition: all 0.5s ease;
+//			&:hover{
+//				transform: scale(1.1);
+//			}
+//		}
+//		.navbar-toggler {
+//			position: relative;
+//			box-shadow: 0 0 0 0;
+//			width: 32px;
+//			height: 27px;
+//			background: transparent;
+//			border: none;
+//			cursor: pointer;
+//			&::after, &::before {
+//				content: '';
+//				position: absolute;
+//				width: 32px;
+//				height: 2px;
+//				background-color: #ffffff;
+//				right: 0;
+//				@include transition(all, 0.3s);
+//			}
+//			&::after {
+//				top: 25px;
+//			}
+//			&::before {
+//				top: 0;
+//				width: 32px;
+//			}
+//			span {
+//				position: absolute;
+//				width: 32px;
+//				height: 2px;
+//				background-color: #ffffff;
+//				top: 12px;
+//				right: 0;
+//				@include transition(all, 0.3s);
+//			}
+//			&[aria-expanded="true"] {
+//				&::after, &::before, span {
+//					top: 10px;
+//				}
+//
+//			}
+//		}
+//	}
+//
+//}
+//.fixed-mx{
+//	margin-top: 30px !important;
+//	-webkit-transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+//    transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+//}
+//
+//
+//// globalNav --
+//// ----------------------------------------------
+//#globalNavWrap {
+//	width: 100%;
+//	position: relative;
+//	&::before {
+//		content: '';
+//		position: fixed;
+//		background: rgba(9, 30, 56, 0.50);
+//		width: 100%;
+//		height: 100vh;
+//		z-index: 99998;
+//		@include trans();
+//		opacity: 0;
+//		visibility: hidden;
+//	}
+//	.navClose {
+//		width: 35px;
+//		height: 35px;
+//		background: transparent;
+//		outline: none;
+//		border: none;
+//		position: absolute;
+//		top: 70px;
+//		right: 63px;
+//		&::before {
+//			content: '';
+//			position: absolute;
+//			background: url('../images/btn-close.svg') no-repeat;
+//			background-size: 35px;
+//			width: 35px;
+//			height: 35px;
+//			top: 0;
+//			left: 0;
+//		}
+//	}
+//	#globalNav {
+//		background: rgba(9, 30, 56, 0.92);
+//		width: 87%;
+//		height: 100vh;
+//		position: fixed;
+//		z-index: 99999;
+//		right: -100%;
+//		overflow-y: auto;
+//		@include trans(all, 0.4s);
+//		.storeList {
+//			margin-top: 160px;
+//			.storeItem {
+//				width: 85%;
+//				margin: 0 auto 110px;
+//				.thumb {
+//					margin-bottom: 30px;
+//					figure {
+//						margin: 0;
+//					}
+//				}
+//				.meta {
+//					.shopName {
+//						font-size: 34px;
+//						font-weight: 700;
+//						color: #ffffff;
+//					}
+//					.businessHouse {
+//						display: flex;
+//						margin: 25px 0;
+//						li {
+//							font-size: 25px;
+//							color: #ffffff;
+//							margin-right: 35px;
+//						}
+//					}
+//					.phoneNum {
+//						position: relative;
+//						font-family: Oswald;
+//						font-size: 45px;
+//						margin-bottom: 40px;
+//						padding: 0 0 0 80px;
+//						color: #ffffff;
+//						display: block;
+//						&::before {
+//							content: '';
+//							position: absolute;
+//							background-image: url('../images/ico-phone-w.svg');
+//							background-repeat: no-repeat;
+//							background-size: 60px;
+//							width: 60px;
+//							height: 60px;
+//							left: 0;
+//							top: -5px;
+//						}
+//					}
+//					.button {
+//						width: calc(100% - 60px);
+//					}
+//				}
+//			}
+//		}
+//		.mainNav {
+//
+//			li {
+//				border-top: 1px #EBEBEB solid;
+//				&:last-child {
+//					border-bottom: 1px #EBEBEB solid;
+//				}
+//				a {
+//					font-size: 30px;
+//					font-weight: 300;
+//					color: #ffffff;
+//					display: block;
+//					padding: 45px 60px;
+//					&.ext-link {
+//						position: relative;
+//						&::before {
+//							content: '';
+//							position: absolute;
+//							background: url('../images/ico-ext-link.svg') no-repeat;
+//							background-size: 35px 26px;
+//							width: 35px;
+//							height: 26px;
+//							right: 60px;
+//						}
+//					}
+//				}
+//			}
+//		}
+//		.navBrand {
+//			text-align: center;
+//			margin: 135px 0;
+//			img {
+//				width: 65%;
+//				margin-bottom: 50px;
+//			}
+//			.navSlogan {
+//				p {
+//					font-size: 30px;
+//					font-weight: 300;
+//					color: #ffffff;
+//					margin-bottom: 10px;
+//				}
+//			}
+//		}
+//	}
+//}
+//
+//.sp-nav-opened {
+//	overflow: hidden;
+//	#globalNavWrap {
+//		&::before {
+//			opacity: 1;
+//			visibility: visible;
+//		}
+//		#globalNav {
+//			right: 0;
+//		}
+//	}
+//
+//}
+//
+//
+//// main --
+//// ----------------------------------------------
+//#mainWrap{
+//	width: 100%;
+//	#main{
+//		.hero {
+//			background: url('../images/home/banner-sp.jpg') no-repeat;
+//			background-size: cover;
+//			width: 100%;
+//			height: 100%;
+//			margin-bottom: 70px;
+//			@include pc{
+//				background: url('../images/home/banner_pc.jpg') no-repeat;
+//
+//				padding-bottom: 330px;
+//				background-size: cover;
+//				margin-bottom: 0;
+//			}
+//			.hero-slogan {
+//				background-color: $base_fontColor;
+//				width: calc(100% - 240px);
+//				position: relative;
+//				margin: 0 0 683px 100px;
+//				padding: 220px 70px 70px;
+//				@include pc{
+//					padding: 250px 0 160px 130px;
+//					width: calc(100% - 710px);
+//					margin: 0 0 495px 580px;
+//				}
+//				h1 {
+//					font-size: 68px;
+//					font-family: $Mincho;
+//					color: #ffffff;
+//					line-height: 1.3;
+//					margin-bottom: 30px;
+//				}
+//				h2 {
+//					font-family: $Gothic;
+//					color: #ffffff;
+//					font-size: 32px;
+//					font-weight: 600;
+//				}
+//			}
+//			.hero-txxt {
+//				font-size: 40px;
+//				font-family: $Gothic;
+//				font-weight: 700;
+//				line-height: 1.8;
+//				color: $base_color;
+//				padding: 0 100px 130px 100px;
+//				@include pc{
+//					display: none;
+//				}
+//			}
+//			.hero-noti {
+//				background-color: #091E38;
+//				margin-left: 100px;
+//				@include pc{
+//					width: 663px;
+//					float: right;
+//				}
+//				a {
+//					display: block;
+//					font-family: $Gothic;
+//					font-size: 28px;
+//					color: #ffffff;
+//					padding: 30px 45px;
+//					line-height: 1.5;
+//				}
+//			}
+//		} // End Hero
+//
+//		section.block {
+//			padding: 70px 0;
+//			@include pc{
+//				padding: 0;
+//				margin-bottom: 160px;
+//			}
+//		}
+//		.stitle {
+//			text-align: left;
+//			position: relative;
+//			margin-bottom: 65px;
+//			h2 {
+//				color: $base_color;
+//				font-size: 56px;
+//				font-family: $Mincho;
+//
+//				small {
+//					font-size: 24px;
+//					font-family: Oswald;
+//					display: block;
+//					margin-top: 10px;
+//				}
+//			}
+//		}
+//		.recommend {
+//			position: relative;
+//			margin-bottom: 160px;
+//			&::before {
+//				content: '';
+//				position: absolute;
+//				background-color: #ffffff;
+//				width: 70%;
+//				height: calc(100% - 50px);
+//				z-index: -1;
+//				margin-top: 20px;
+//				right: 0;
+//				@include pc{
+//					background-color: #f8f8f8;
+//				}
+//			}
+//			.hero-txxt {
+//				display: none;
+//				@include pc{
+//					font-size: 40px;
+//					font-family: $Gothic;
+//					font-weight: 700;
+//					line-height: 58px;
+//					color: $base_color;
+//					text-align: center;
+//					margin-top: 60px;
+//					margin-bottom: 200px;
+//					display: block;
+//				}
+//			}
+//			.stitle {
+//				margin-bottom: 70px;
+//			}
+//			.recList {
+//				display: grid;
+//				grid-template-columns: 1fr 1fr;
+//				grid-gap: 65px 20px ;
+//				@include pc{
+//					grid-template-columns: 1fr 1fr 1fr;
+//					column-gap: 46px;
+//				}
+//				li {
+//					a {
+//						.thumb {
+//							position: relative;
+//							margin-bottom: 20px;
+//							figure {
+//								width: 100%;
+//								margin: 0;
+//								position: relative;
+//								display: inline-block;
+//								&::before {
+//									content: '';
+//									position: absolute;
+//									width: calc(100% - 10px);
+//									height: calc(100% - 10px);
+//									border: 5px rgba(255,255,255, 0.56) solid;
+//								}
+//								img {
+//									width: 100%;
+//								}
+//							}
+//							.meta {
+//								position: absolute;
+//								top: 0;
+//								left: 0;
+//								display: flex;
+//								.type {
+//									background-color: #091E38;
+//									padding: 10px 10px 5px 10px;
+//									color: #ffffff;
+//									font-size: 26px;
+//								}
+//								.room {
+//									background-color: #ffffff;
+//									padding: 10px 10px 5px 10px;
+//									font-size: 30px;
+//								}
+//							}
+//
+//						}
+//						.title {
+//							font-size: 26px;
+//							font-weight: 400;
+//							margin-bottom: 48px;
+//							position: relative;
+//							&::after {
+//								content: '';
+//								position: absolute;
+//								background-color: #1E429F;
+//								width: 32px;
+//								height: 1px;
+//								left: 0;
+//								top: 47px;
+//							}
+//						}
+//						p {
+//							font-size: 24px;
+//						}
+//						.price {
+//							margin-top: 5px;
+//							font-size: 30px;
+//							span {
+//								font-size: 36px;
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+//
+//
+//		.forOwner {
+//			position: relative;
+//			margin-bottom: 210px;
+//			@include pc{
+//				margin-bottom: 0;
+//			}
+//			&::before {
+//				content: '';
+//				position: absolute;
+//				background-color: #ffffff;
+//				width: 100%;
+//				height: calc(100% - 560px);
+//				z-index: -2;
+//				margin-top: 20px;
+//				@include pc{
+//					content: '';
+//					position: absolute;
+//					background-color: #ffffff;
+//					width: 100%;
+//					height: calc(100% + 70px);
+//					z-index: -2;
+//					margin-top: 20px;
+//				}
+//			}
+//			&::after {
+//				content: '';
+//				position: absolute;
+//				background-color: $base_fontColor;
+//				width: 95%;
+//				height: calc(100% - 410px);
+//				z-index: -1;
+//				right: 0;
+//				top: 480px;
+//				@include pc{
+//					display: none;
+//				}
+//			}
+//			.row{
+//				@include pc{
+//					display: grid;
+//					grid-template-columns: 1fr 1fr;
+//				}
+//				figure {
+//					margin: 0 0 100px 0;
+//					@include pc{
+//						margin: 0;
+//					}
+//					img {
+//						width: 95%;
+//						@include pc{
+//							width: 100%;
+//						}
+//					}
+//				}
+//				.forOwner-cont {
+//					padding: 0 5% 0 10%;
+//					@include pc{
+//						padding: 160px 150px 65px 100px;
+//						position: relative;
+//
+//					}
+//					&::after{
+//						@include pc{
+//							position: absolute;
+//							background-color: $base_fontColor;
+//							content: '';
+//							width: 100%;
+//							height: 470px;
+//							left: 0%;
+//							top: 75px;
+//							z-index: -1;
+//						}
+//					}
+//					h2 {
+//						color: #ffffff;
+//						font-size: 44px;
+//						font-weight: 700;
+//						margin-bottom: 45px;
+//						line-height: 1.5;
+//						@include pc{
+//							font-size: 32px;
+//							line-height: 38px;
+//						}
+//					}
+//					p {
+//						font-size: 30px;
+//						color: #ffffff;
+//						line-height: 1.6;
+//						@include pc{
+//							font-size: 16px;
+//						}
+//					}
+//					.button {
+//						position: absolute;
+//						bottom: -115px;
+//						width: calc(85% - 60px);
+//						@include pc{
+//							width: 400px;
+//							position: relative;
+//							bottom: -100px;
+//						}
+//					}
+//				}
+//			}
+//
+//		}
+//	}
+//}
+//
+//.shopInfo {
+//	position: relative;
+//	margin-bottom: 180px;
+//	@include pc{
+//		margin-bottom: 130px;
+//	}
+//	&::before {
+//		content: '';
+//		position: absolute;
+//		background-color: #ffffff;
+//		width: 75%;
+//		height: calc(100% - 80px);
+//		z-index: -1;
+//		margin-top: 20px;
+//		left: 0;
+//	}
+//	.shopList {
+//		@include pc{
+//			display: grid;
+//			grid-template-columns: 1fr 1fr;
+//			column-gap: 40px;
+//		}
+//
+//		.shopItem {
+//			margin-bottom: 170px;
+//			@include pc{
+//				margin-bottom: 135px;
+//			}
+//			.thumb {
+//				margin: 0 0 40px;
+//				position: relative;
+//				figure {
+//					margin: 0;
+//					width: 95%;
+//					position: relative;
+//					@include pc{
+//						width: 100%;
+//					}
+//					img {
+//						width: 100%;
+//						-webkit-box-shadow: 10px 10px 20px 0px rgba(136, 136, 136, 0.43);
+//						-moz-box-shadow:    10px 10px 20px 0px rgba(136, 136, 136, 0.43);
+//						box-shadow:         10px 10px 20px 0px rgba(136, 136, 136, 0.43);
+//					}
+//				}
+//				.shopName {
+//					background-color: $base_fontColor;
+//					color: #ffffff;
+//					font-size: 40px;
+//					font-weight: 700;
+//					padding: 30px 40px 30px 70px;
+//					position: absolute;
+//					bottom: 0;
+//					@include pc{
+//						font-size: 32px;
+//						padding: 18px 40px 18px 50px;
+//					}
+//					&::before {
+//						content: '';
+//						position: absolute;
+//						width: 50px;
+//						height: 1px;
+//						background-color: #ffffff;
+//						left: 0;
+//						top: 50%;
+//						@include pc{
+//							width: 41px;
+//						}
+//					}
+//				}
+//
+//			}
+//			.meta {
+//				@include pc{
+//					padding: 0 30px 0 50px;
+//				}
+//				.address {
+//					font-size: 30px;
+//					line-height: 1.3;
+//					@include pc{
+//						font-size: 24px;
+//					}
+//					span {
+//						display: block;
+//					}
+//				}
+//				.businessHouse {
+//					display: flex;
+//					margin: 20px auto;
+//					li {
+//						font-size: 26px;
+//						margin-right: 20px;
+//						@include pc{
+//							font-size: 21px;
+//						}
+//						&:last-child {
+//							margin-right: 0;
+//						}
+//						span {
+//							display: inline-block;
+//							background-color: $base_fontColor;
+//							color: #ffffff;
+//							padding: 8px 15px;
+//							border-radius: 50px;
+//							margin-right: 15px;
+//							@include pc{
+//								font-size: 19px;
+//							}
+//						}
+//					}
+//				}
+//				.phoneNum {
+//					position: relative;
+//					font-family: Oswald;
+//					font-size: 56px;
+//					margin-bottom: 40px;
+//					padding: 0 0 0 80px;
+//					display: block;
+//					@include pc{
+//						font-size: 45px;
+//						transition: all 0.5s ease;
+//					}
+//					&::before {
+//						content: '';
+//						position: absolute;
+//						background-image: url('../images/ico-phone-b.svg');
+//						background-repeat: no-repeat;
+//						background-size: 68px;
+//						width: 68px;
+//						height: 68px;
+//						left: 0;
+//						top: -5px;
+//					}
+//					&:hover{
+//						letter-spacing: 1.2px;
+//					}
+//				}
+//				.button {
+//					width: 70%;
+//					@include pc{
+//						font-size: 24px;
+//						width: 75%;
+//						margin: 0 0 0 50px;
+//					}
+//				}
+//			}
+//			.inner{
+//				width: 90%;
+//				@include pc{
+//					width: auto;
+//				}
+//			}
+//			&:nth-child(even) {
+//				.thumb {
+//					display: flex;
+//					justify-content: flex-end;
+//
+//					.shopName {
+//						padding: 30px 70px 30px 40px;
+//						@include pc{
+//
+//								font-size: 32px;
+//								padding: 18px 40px 18px 50px;
+//
+//						}
+//						&::before {
+//							right: 0;
+//							left: auto;
+//						}
+//					}
+//				}
+//			}
+//			&:nth-child(2n+1) {
+//				.shopName {
+//					@include pc{
+//						margin-right: 40px;
+//					}
+//				}
+//			}
+//			&:nth-child(2n) {
+//				.shopName {
+//					@include pc{
+//						margin-left: 40px;
+//					}
+//				}
+//			}
+//			&:last-child{
+//				margin: 0;
+//			}
+//			&:nth-child(2n) {
+//				.thumb{
+//					margin-right: -5%;
+//						@include pc{
+//							margin: 0 0 40px 0;
+//						}
+//				}
+//			}
+//			&:nth-child(2n+1){
+//				.thumb {
+//					margin-left: -5%;
+//					@include pc{
+//						margin: 0 0 40px 0;
+//					}
+//				}
+//			}
+//
+//		}
+//
+//	}
+//
+//}
+//
+//// footer --
+//// ----------------------------------------------
+//#footWrap{
+//	width: 100%;
+//	background-color: #091E38;
+//	padding: 150px 0 0 0;
+//	position: relative;
+//	@include pc{
+//		padding: 105px 0 0 0;
+//	}
+//	.footer-main{
+//		@include pc{
+//			display: flex;
+//			align-items: center;
+//			justify-content: space-between;
+//		}
+//		.ft_pc{
+//			@include pc{
+//				padding: 0 0 0 80px;
+//			}
+//			.fBrand {
+//				text-align: center;
+//				margin-bottom: 50px;
+//				@include pc{
+//					text-align: center;
+//					margin-bottom: 20px;
+//				}
+//
+//				img {
+//					width: 70%;
+//					@include pc{
+//						width: 325px;
+//					}
+//				}
+//			}
+//			.fSlogan {
+//				text-align: center;
+//				margin-bottom: 165px;
+//				@include pc{
+//					text-align: center;
+//				}
+//				p {
+//					font-size: 30px;
+//					font-weight: 300;
+//					color: #ffffff;
+//					margin-bottom: 10px;
+//					@include pc{
+//						font-size: 16px;
+//					}
+//				}
+//			}
+//		}
+//
+//		.footer-link{
+//			@include pc{
+//				padding: 0 0 0 370px;
+//    			width: 32%;
+//			}
+//			.fLink {
+//				display: grid;
+//				grid-template-columns: 1fr 1fr;
+//				@include pc{
+//					display: block;
+//				}
+//				li {
+//					text-align: center;
+//					@include pc{
+//						display: inline-block;
+//						margin-right: 17px;
+//					}
+//					&:nth-child(odd) {
+//						border-top: 1px #5A6A7E solid;
+//						border-right: 1px #5A6A7E solid;
+//						@include pc{
+//							border: none;
+//						}
+//					}
+//					&:nth-child(even) {
+//						border-top: 1px #5A6A7E solid;
+//						@include pc{
+//							border: none;
+//						}
+//					}
+//					&:nth-child(5), &:nth-child(6) {
+//						border-bottom: 1px #5A6A7E solid;
+//						@include pc{
+//							border: none;
+//						}
+//					}
+//					a {
+//						color: #ffffff;
+//						font-size: 30px;
+//						font-weight: 300;
+//						display: inline-block;
+//						padding: 70px 0;
+//						@include trans();
+//						@include pc{
+//							font-size: 15px;
+//							padding: 10px
+//						}
+//						&:hover {
+//							opacity: 0.75;
+//						}
+//						&.ext-link {
+//							position: relative;
+//							@include pc{
+//    							padding: 10px 35px 10px 10px;
+//							}
+//							&::before {
+//								content: '';
+//								position: absolute;
+//								background: url('../images/home/ico-phone-b.svg') no-repeat;
+//								background-size: 25px 26px;
+//								width: 35px;
+//								height: 26px;
+//								right: -43px;
+//								@include pc{
+//									width: 35px;
+//									background-size: 25px 26px;
+//									height: 26px;
+//									right: -11px;
+//									bottom: 5px;
+//								}
+//							}
+//						}
+//					}
+//				}
+//			}
+//			.copyright {
+//				text-align: center;
+//				padding: 130px 0;
+//				@include pc{
+//					display: block;
+//					padding-top: 20px;
+//				}
+//				p {
+//					font-family: Oswald-Light;
+//					color: #949BA4;
+//					font-size: 24px;
+//					letter-spacing: 0.2rem;
+//					@include pc{
+//						font-size: 13px;
+//						text-align: left;
+//					}
+//				}
+//			}
+//		}
+//	}
+//
+//
+//
+//	.twoBtn {
+//		display: grid;
+//		grid-template-columns: 1fr 1fr;
+//		a {
+//			text-align: center;
+//			padding: 30px 0;
+//			color: #ffffff;
+//			font-size: 24px;
+//			background-color: $base_fontColor;
+//			span {
+//				display: block;
+//				margin-bottom: 5px;
+//				font-size: 16px;
+//			}
+//			&:nth-child(2) {
+//				background-color: $base_color;
+//			}
+//		}
+//	}
+//}
+//
+//
+
+
+
+
+
