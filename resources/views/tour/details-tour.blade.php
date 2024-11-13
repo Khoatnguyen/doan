@@ -152,7 +152,7 @@
                        Lịch trình
                     </span>
                 </div>
-                <div class="container">
+                <div class="">
                     <div class="line">
                         @foreach($listSchedule as $schedule)
                             @php
@@ -189,7 +189,7 @@
                             <div class="tab-pane fade show active" id="list-home" role="tabpanel"
                                  aria-labelledby="list-home-list">
                                 @php
-                                    $includes = explode('/',$detail_tour->include_price);
+                                    $includes = explode('+',$detail_tour->include_price);
                                 @endphp
                                 <ul>
                                     @foreach($includes as $include)
@@ -202,7 +202,7 @@
                             <div class="tab-pane fade" id="list-profile" role="tabpanel"
                                  aria-labelledby="list-profile-list">
                                 @php
-                                    $none_includes = explode('/',$detail_tour->none_include_price);
+                                    $none_includes = explode('+',$detail_tour->none_include_price);
                                 @endphp
                                 <ul>
                                     @foreach($none_includes as $none_include)
@@ -214,7 +214,7 @@
                             <div class="tab-pane fade" id="list-messages" role="tabpanel"
                                  aria-labelledby="list-messages-list">
                                 @php
-                                    $notes = explode('/',$detail_tour->note);
+                                    $notes = explode('+',$detail_tour->note);
                                 @endphp
                                 <ul>
                                     @foreach($notes as $note)
@@ -230,42 +230,35 @@
             </div>
             <div class="col-md-3 ">
                 <div class="list-group fixed ">
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                    <div class="list-group-item list-group-item-action flex-column align-items-start active">
                         <table class="table">
                             <tbody>
                             <tr>
                                 <td>Từ</td>
-                                <td class="price-tour">17,990,000 ₫</td>
+                                <td class="price-tour">{{$detail_tour->schedule_price}}</td>
                             </tr>
                             </tbody>
                         </table>
-                    </a>
-                    <a style="padding: 2rem" href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    </div>
+                    <div style="padding: 2rem" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                         </div>
                         <h4 style="font-weight: 600">Ngày khởi hành</h4>
-                        <p class="mb-1">Khởi hành trong toàn bộ các ngày từ 13/09/2023 đến 31/03/2024</p>
-                    </a>
-                    <a style="padding: 2rem" href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <p class="mb-1">Khởi hành trong toàn bộ các ngày từ {{$detail_tour->date_start}} đến {{$detail_tour->date_end}}</p>
+                    </div>
+                
+                    <div style="padding: 2rem"  class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                         </div>
-                        <h4 style="font-weight: 600">Người lớn</h4>
-                        <p class="mb-1">Giá tour có thể thay đổi tùy vào ngày khởi hành, vui lòng liên hệ để được tư vấn
-                            17,990,000 ₫</p>
-                    </a>
-                    <a style="padding: 2rem" href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                        </div>
-                        <button type="button" style="background: #EC0072;font-size: 14px;color: #fff;width: 100%" class="btn">Đặt ngay</button>
-                    </a>
+                        
+                        <button type="button" style="background: #EC0072;font-size: 14px;color: #fff;width: 100%" class="btn">
+                        <a style="color: #fff" href="{{route('order.tour',$detail_tour->id)}}"> Đặt ngay </a>
+                        </button>        
+                    </div>
                 </div>
             </div>
         </div>
-        <div class=" edit-tour">
-            <a href="{{route('get.edit',$detail_tour->id)}}">
-            <button type="button" style="width: 15%" class="btn">Sửa tour</button>
-            </a>
-        </div>
+       
     </div>
     <script>
         const range = document.querySelector('[name="range"]');

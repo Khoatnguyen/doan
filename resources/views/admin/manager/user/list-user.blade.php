@@ -7,29 +7,24 @@
                 <thead>
                 <tr>
                     <th scope="col">id</th>
-                    <th scope="col">Tiêu đề</th>
-                    <th scope="col">Giới thiệu</th>
-                    <th scope="col">Giới thiệu nhỏ</th>
-                    <th scope="col">Địa điểm</th>
-                    <th scope="col">Giá giảm giá</th>
-                    <th scope="col">Giá cũ</th>
-                    <th scope="col">Số Giường</th>
-{{--                    <th scope="col">Khu vực</th>--}}
-                    <th scope="col">Cảnh quan</th>
+                    <th scope="col">Id user</th>
+                    <th scope="col">Họ và tên</th>
+                    <th scope="col">Giới tính</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Quyền</th>
                     <th scope="col">Trạng thái</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($list_hotel as $item)
+                @foreach($user as $item)
                     <tr>
                         <td>{{$item->id}}</td>
-                        <td>{{$item->title}}</td>
-                        <td>{{$item->description}}</td>
-                        <td>{{$item->small_description}}</td>
+                        <td>{{$item->user_id}}</td>
+                        <td>{{$item->full_name}}</td>
+                        <td>{{$item->gender}}</td>
+                        <td>{{$item->phone}}</td>
                         <td>{{$item->address}}</td>
-                        <td>{{$item->price_sale}}</td>
-                        <td>{{$item->price_old}}</td>
-                        <td>{{$item->number_bed}}</td>
                         <td>{{$item->view}}</td>
                         <td style="display: flex">
                             <button  type="button" class="btn mr-lg-1 ml-lg-1 btn-warning edit-discount"

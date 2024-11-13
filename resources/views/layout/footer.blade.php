@@ -120,7 +120,10 @@
                 data:{"_token":"{{csrf_token()}}", key:key},
                 success: function(data) {
                     console.log(data);
-                    if(data){
+
+                    if(data === ''){
+                        $('#list-show').hide()
+                    }else {
                         $('#list-show').hide()
                         $('#resultSearch').html(data)
                     }

@@ -77,7 +77,7 @@ class TourController extends Controller
         );
 
         $saveTour = Tour::create($createTour);
-
+       
         if ($saveTour){
             return redirect()->route('get.list');
         }else{
@@ -170,7 +170,7 @@ class TourController extends Controller
                     $images= explode('|',$item->library_images);
                     $output .= '
                        <div class="col-md-4 pr-4 flex-wrap list-tour">
-                        <a href="'.route('get.detail',$item->id).'">
+                        <a href="'.route('get.detail.tour',$item->id).'">
                                 <div class="item-plash">
                                     <div class="img-plash">
                                             <img style="width: 468px;object-fit: contain"
@@ -199,7 +199,7 @@ class TourController extends Controller
                                 </div>
                     ';
                 }
-            }
+            };
             return Response($output);
         }
     }
@@ -262,7 +262,7 @@ class TourController extends Controller
                     $images= explode('|',$item->library_images);
                     $output .= '
                        <div class="col-md-4 pr-4 flex-wrap list-tour">
-                        <a href="'.route('get.detail',$item->id).'">
+                        <a href="'.route('get.detail.tour',$item->id).'">
                                 <div class="item-plash">
                                     <div class="img-plash">
                                             <img style="width: 468px;object-fit: contain"
@@ -296,5 +296,63 @@ class TourController extends Controller
 
         }
 
+    }
+
+    public  function orderTour($id){
+        $detail_tour = Tour::all()->where('id','=',$id)->first();
+        return view("order.order")->with([
+            'detail_tour'=>$detail_tour,
+        ]);
+    }
+    public function plusAdult(Request $request){
+        $id= $request->id;
+        $detail_tour = Tour::where('id','=',$id)->first();
+        $total= ($detail_tour->price)*($request->number_adult);
+        $totalFormat= number_format($total, 0, ',', '.');
+        $output=['detail_tour'=>$detail_tour,
+                    'totalFormat'=>$totalFormat,
+                    'number_adult'=>$request->number_adult,
+                    'total'=>$total,
+                ];
+        return response()->json($output);
+    }
+    public function minusAdult(Request $request){
+        $id= $request->id;
+        $detail_tour = Tour::where('id','=',$id)->first();
+        $total= ($detail_tour->price)*($request->number_adult);
+        $totalFormat= number_format($total, 0, ',', '.');
+        $output=['detail_tour'=>$detail_tour,
+                    'totalFormat'=>$totalFormat,
+                    'number_adult'=>$request->number_adult,
+                    'total'=>$total,
+                ];
+        return response()->json($output);
+    }
+    public function prePayment(Request $request){
+        $id= $request->id;
+        $detail_tour = Tour::where('id','=',$id)->first();
+        $total= ($detail_tour->price)*($request->dataNumber);
+        $totalFormat= number_format($total, 0, ',', '.');
+        $prePayment='';
+        if($request->FinalprePay === "1"){
+            $prePayment=(($detail_tour->price)*($request->dataNumber))*0.3;
+            $remain= $total-$prePayment;
+            $preFormat= number_format($prePayment, 0, ',', '.');
+            $remainFormat= number_format($remain, 0, ',', '.');
+        }
+       $end= $request->FinalprePay==="1"?$remainFormat:0;
+       $advancePay= $request->FinalprePay==="1"?"Thanh toán trước 30%":"Thanh toán 100%";
+       $needPayment=$request->FinalprePay==="1"?$preFormat:$totalFormat;
+       $needPayment1=$request->FinalprePay==="1"?$prePayment:$total;
+       $output=[    'detail_tour'=>$detail_tour,
+                    'totalFormat'=>$totalFormat,
+                    'dataNumber'=>$request->dataNumber,
+                    'total'=>$total,
+                    'end'=>$end,
+                    'advancePay'=>$advancePay,
+                    'needPayment'=>$needPayment,
+                    'needPayment1'=>$needPayment1,
+                ];
+        return response()->json($output);
     }
 }

@@ -48,6 +48,12 @@
                            placeholder="{{$data->vehicle}}">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
+                    <span>Lịch trình:</span>
+                    <textarea id="edit-schedule" class="schedule" name="schedule"
+                              placeholder="{{$data->schedule}}">
+                                </textarea>
+                </div>
+                <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Giá bao gồm:</span>
                     <textarea id="edit-include-price" class="include-price" name="include_price"
                               placeholder="{{$data->include_price}}">
@@ -83,6 +89,11 @@
                     <span>Ngày đi:</span>
                     <input type="date" id="edit-date-start" class="date-start" name="date_start" value=""
                            placeholder="Thêm ngày đi">
+                </div>
+                <div class="col-md-4" style="display: grid;padding-top: 2rem">
+                    <span>Ngày về:</span>
+                    <input type="date" id="edit-date-end" class="date-end" name="date_end" value=""
+                           placeholder="Thêm ngày về">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Thêm ảnh:</span>

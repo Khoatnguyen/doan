@@ -47,14 +47,14 @@
                                                     <tr>
                                                         <td class="col-md-4 bdn">Tên người dùng:</td>
                                                         <td>
-                                                            <input type="text" name="name"
+                                                            <input type="text" name="name"class="form-control"style="width:50%"
                                                                    value="{{isset($userInfo->user->name) ? $userInfo->user->name : ""}}" placeholder="{{isset($userInfo->user->name) ? $userInfo->user->name : ""}}">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="col-md-4 bdn">Họ và tên:</td>
                                                         <td>
-                                                            <input type="text" name="full_name"
+                                                            <input type="text" name="full_name" class="form-control"style="width:50%"
                                                                    value="{{isset($userInfo->full_name)?$userInfo->full_name : ""}}">
                                                         </td>
                                                     </tr>
@@ -85,21 +85,21 @@
                                                     <tr>
                                                         <td class="bdn">Email:</td>
                                                         <td>
-                                                            <input type="email" name="email"
+                                                            <input type="email" name="email" class="form-control"style="width:50%"
                                                                    value="{{isset($userInfo->user->email)?$userInfo->user->email: ""}}" placeholder="{{isset($userInfo->user->email)?$userInfo->user->email: ""}}">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="bdn">Số điện thoại:</td>
                                                         <td>
-                                                            <input type="number" name="phone"
+                                                            <input type="number" name="phone" class="form-control"style="width:50%"
                                                                    value="{{isset($userInfo->phone)?$userInfo->phone :""}}">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="bdn">Địa chỉ:</td>
                                                         <td>
-                                                            <input type="text" name="address"
+                                                            <input type="text" name="address" class="form-control"style="width:50%"
                                                                    value="{{isset($userInfo->address)?$userInfo->address:""}}">
                                                         </td>
                                                     </tr>

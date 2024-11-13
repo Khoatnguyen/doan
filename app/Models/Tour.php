@@ -27,10 +27,14 @@ class Tour extends Model
         'schedule_price',
         'price',
         'date_start',
+        'date_end',
     ];
 
     public function setFilenamesAttribute($value)
     {
         $this->attributes['library_images'] = json_encode($value);
+    }
+    public function orderInfo(){
+        return $this->hasOne(OrderTourInfor::class,'tour_id','id');
     }
 }

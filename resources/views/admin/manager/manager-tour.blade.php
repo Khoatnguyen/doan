@@ -1,6 +1,6 @@
 @extends('admin.layout.main')
 @section('content')
-    <div class="manager-tour">
+    <div class="container-fluid manager-tour">
         <button type="button" style="margin-bottom: 2rem" class="btn btn-primary"><a href="{{route('get.add-tour')}}" style="color: #ffffff"> <i class="fa fa-plus" aria-hidden="true"></i></a></button>
         <div class="table-tour" style="overflow-x: scroll">
             <table id="data-tour" class="display table table-striped table-hover" cellspacing="0" width="100%">
@@ -27,7 +27,7 @@
                     <tr>
                         <td>{{$item->id}}</td>
                         <td>{{$item->title}}</td>
-                        <td>{{$item->description}}</td>
+                        <td class="test">{{$item->description}}</td>
                         <td>{{$item->small_description}}</td>
                         <td>{{$item->time}}</td>
                         <td>{{$item->depart}}</td>
@@ -40,9 +40,12 @@
                         <td>{{$item->date_start}}</td>
                         <td style="display: flex">
                             <button  type="button" class="btn mr-lg-1 ml-lg-1 btn-warning edit-discount"
-                                   data-toggle="modal" data-target="#edit-discount-show"><a style="color: #fff" href="{{route('get.edit-tour',$item->id)}}"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a></button>
+                                   data-toggle="modal"><a style="color: #fff" href="{{route('get.edit-tour',$item->id)}}"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a></button>
                              <button  type="button" class="btn mr-lg-1 ml-lg-1 btn-success"
-                                   data-toggle="modal"><a style="color: #fff" href="{{route('get.edit-tour',$item->id)}}"><i class="fa fa-upload" aria-hidden="true"></i></a></button>
+                                   data-toggle="modal"><a style="color: #fff" href="{{route('get.detail.tour',$item->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a></button>
+
+                            <button  type="button" class="btn mr-lg-1 ml-lg-1 btn-primary"
+                                   data-toggle="modal"><a style="color: #fff" href="{{route('get.list.schedule',$item->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a></button>
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal_<?php echo $item->id ?>">
                                  <i class="fa fa-trash" aria-hidden="true"></i></button>
                         </td>

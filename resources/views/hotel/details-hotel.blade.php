@@ -151,14 +151,14 @@
             <span>Đặt phòng</span>
             <div class="choose-number ">
                 <input class="choose-date"  type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
-                <div class="choose-quantity btn-group">
+                <div class="choose-quantity btn-group" style="display:inline-block !important">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="adult"> <div class="number-adult">0</div> Người lớn</span>
                         <span class="children"><div class="number-children">0</div> Trẻ em</span>
                         <span class="rom"><div class="number-rom">0</div> Số phòng</span>
                     </button>
 
-                    <ul class="dropdown-menu" style="width: calc(150% + 89px);">
+                    <ul class="dropdown-menu">
                         <li>
                             <span>Người lớn</span>
                                 <div class="wrapper">

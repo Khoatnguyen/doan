@@ -32,6 +32,7 @@ class  CreateToursTable extends Migration
             $table->longText('schedule_price');
             $table->bigInteger('price');
             $table->dateTime('date_start');
+            $table->dateTime('date_end');
             $table->timestamps();
         });
     }

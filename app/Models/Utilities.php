@@ -15,4 +15,10 @@ class Utilities extends Model
         'name',
         'icon',
     ];
+    public function utilitiesCategory(){
+        return $this->hasOne(UtilityCategory::class,'id','utility_category_id');
+    }
+    public function hotel(){
+        return $this->hasOne(Hotel::class,'id','hotel_id');
+    }
 }

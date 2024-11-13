@@ -568,6 +568,7 @@ body {
                         display: none;
                         width: 100%;
                         flex-basis: auto;
+                        background-color: none !important;
 
                         .item-plash {
                             width: auto !important;
@@ -1438,8 +1439,33 @@ body {
                 }
             }
         }
+        // payment page
+        
+        
     }
-
+    .payment{
+        .information-tour{
+            .avatar{
+            display: flex;
+            justify-content: center;
+            margin-right: 16px;
+            overflow: hidden;
+            position: relative;
+            width: 170px;
+            img{
+                display: flex;
+                height: 100%;
+                -o-object-fit: cover;
+                object-fit: cover;
+                -o-object-position: center;
+                object-position: center;
+                position: absolute;
+                width: 100%;
+            }
+            
+        }
+    }
+    }
     .record-manage {
         padding: 3rem;
         text-align: center;

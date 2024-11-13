@@ -45,7 +45,7 @@
                     <div id="list-show" class="row">
                     @foreach($detail_tour as $item )
                     <div class="col-md-4 pr-4 flex-wrap list-tour">
-                            <a href="{{route('get.detail',$item->id)}}">
+                            <a href="{{route('get.detail.tour',$item->id)}}">
                                 <div class="item-plash">
                                     <div class="img-plash">
                                         @php

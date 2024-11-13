@@ -63,7 +63,7 @@
 
                     <i style="width: 50%; text-align:end; padding-top: 0.5rem" class="far fa-bell"></i>
                 </div>
-                <div class="col-md-3 d-flex" style="width: 100%">
+                <div class="col-md-3 d-flex">
                     @if(\Illuminate\Support\Facades\Auth::check())
                         <a href="{{route('logout')}}" style="width: 50%">
                             <button type="button" class="btn btn-primary"
