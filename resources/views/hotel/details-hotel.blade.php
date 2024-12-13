@@ -25,14 +25,12 @@
         </div>
         <div class="price-hotel">
             <i class="fa fa-money" aria-hidden="true"></i>
-            {{$data_detail->price_sale}}
+            {{$data_detail->price_sell}}
         </div>
         <div class="slide-hotel">
             <div class="video-slider">
                 <video height="336px" type="video/mp4" loop="" muted="" autoplay=""><source src="https://teaser.hn.ss.bfcplatform.vn/594_MYTOUR.mp4">Your browser does not support the video tag.</video>
-            </div>
-         
-          
+            </div>        
             @foreach($images as $item)
                 <div class="img-slider" style="width: 100%; height: 100%; position: relative; ">
                     <img style="top: 0; left:0; width:100%; height:100%; position:absolute;object-fit:cover;"  src="{{\Illuminate\Support\Facades\Storage::url($item)}}" alt="">
@@ -147,46 +145,95 @@
                 </div>
             </div>
         </div>
-        <div class="book-hotel">
-            <span>Đặt phòng</span>
-            <div class="choose-number ">
-                <input class="choose-date"  type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
-                <div class="choose-quantity btn-group" style="display:inline-block !important">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="adult"> <div class="number-adult">0</div> Người lớn</span>
-                        <span class="children"><div class="number-children">0</div> Trẻ em</span>
-                        <span class="rom"><div class="number-rom">0</div> Số phòng</span>
-                    </button>
+        <div class="book-hotel" style="text-align: center; padding-top:5rem">
+            <button type="button" class="btn book" data-toggle="modal" data-target="#myModal">
+            Đặt phòng</button>
+            
+        </div>
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                     <div class="modal-header">
+                        <h4 class="modal-title">Đặt phòng</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                     <!-- Modal body -->
+                    <div class="modal-body text-center">
+                    <form action="{{route('order.hotel')}}"  method="post">
+                        @csrf
+                        <div class="book-hotel">
+                            <div class="choose-number row ">
+                            <div class="col-md-12" style="display: grid;padding-top: 2rem">
+                                <span style="padding-bottom:1rem;text-align: left">Chọn ngày:</span>
+                                <input class="choose-date"  type="text" name="daterange" value="01/01/2024 - 01/15/2025" />
+                            </div>
+                            <div class="col-md-12" style="display: grid;padding-top: 2rem">
+                                <span style="padding-bottom:1rem;text-align: left">Chọn số người đi</span>
+                                <div class="choose-quantity btn-group" style="display:inline-block !important">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="adult"> <div  class="number-adult">0</div> Người lớn</span>
+                                        <input name="number_adult" type="hidden" id="data-adult" value="1">
+                                        <span class="children"><div  class="number-children">0</div> Trẻ em</span>
+                                        <input name="number_children" type="hidden" id="data-children" value="1">
+                                        <span class="rom"><div  class="number-rom">0</div> Số phòng</span>
+                                        <input name="number_rom" type="hidden" id="data-rom" value="1">
 
-                    <ul class="dropdown-menu">
-                        <li>
-                            <span>Người lớn</span>
-                                <div class="wrapper">
-                                    <div class="control" id="minus-adult">-</div>
-                                    <div class="number-adult">0</div>
-                                    <div class="control" id="plus-adult">+</div>
+                                    </button>
+
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <span>Người lớn</span>
+                                                <div class="wrapper">
+                                                    <div class="control" id="minus-adult">-</div>
+                                                    <div class="number-adult">0</div>
+                                                    <div class="control" id="plus-adult">+</div>
+                                                </div>
+                                        </li>
+                                        <li>
+                                            <span>Trẻ em</span>
+                                            <div class="wrapper">
+                                                <div class="control" id="minus-children">-</div>
+                                                <div class="number-children">0</div>
+                                                <div class="control" id="plus-children">+</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span>Số phòng</span>
+                                            <div class="wrapper">
+                                                <div class="control" id="minus-rom">-</div>
+                                                <div class="number-rom">0</div>
+                                                <div class="control" id="plus-rom">+</div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
-                        </li>
-                        <li>
-                            <span>Trẻ em</span>
-                            <div class="wrapper">
-                                <div class="control" id="minus-children">-</div>
-                                <div class="number-children">0</div>
-                                <div class="control" id="plus-children">+</div>
                             </div>
-                        </li>
-                        <li>
-                            <span>Số phòng</span>
-                            <div class="wrapper">
-                                <div class="control" id="minus-rom">-</div>
-                                <div class="number-rom">0</div>
-                                <div class="control" id="plus-rom">+</div>
+                            <div class="col-md-6" style="display: grid;padding-top: 2rem">
+                                <span style="padding-bottom:1rem;text-align: left">Tên khách hàng:</span>
+                                <input type="text" class="form-control" name="name_custom"
+                                value="" placeholder="Thêm tên khách hàng">                        
                             </div>
-                        </li>
-                    </ul>
+                            <div class="col-md-6" style="display: grid;padding-top: 2rem">
+                                <span style="padding-bottom:1rem;text-align: left">Sđt khách hàng:</span>
+                                <input type="text" class="form-control" name="phone_custom"
+                                value="" placeholder="Thêm số điện thoại">                        
+                            </div>
+                            <div class="col-md-6" style="display: grid;padding-top: 2rem">
+                                <span style="padding-bottom:1rem;text-align: left">Email khách hàng:</span>
+                                <input type="text" class="form-control" name="email_custom"
+                                value="" placeholder="Thêm email">   
+                                <input type="hidden" class="form-control" name="price"
+                                value="{{$data_detail->price_sell}}" placeholder="Thêm email">                      
+                                <input type="hidden" class="form-control" name="hotel_id"
+                                value="{{$data_detail->id}}" placeholder="Thêm email">                      
+                            </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="margin-top: 2rem">Đặt khách sạn</button>
+                    </form>
+                    </div>
                 </div>
-                <button type="button" class="btn book">Đặt phòng</button>
-            </div>
         </div>
     </div>
     <script type="text/javascript">
@@ -254,6 +301,7 @@
         function setNumberAdult(number_adult) {
             // $("#number").attr('data-content', number);
             $(".number-adult").text(number_adult);
+            $("#data-adult").val(number_adult);
         }
 
         var number_children= 0;
@@ -282,6 +330,7 @@
             // $("#number").attr('data-content', number);
             console.log(number_children,4)
             $(".number-children").text(number_children);
+            $("#data-children").val(number_children);
         }
 
         var number_rom= 0;
@@ -309,6 +358,10 @@
         function setNumberRom(number_rom) {
             // $("#number").attr('data-content', number);
             $(".number-rom").text(number_rom);
+            $("#data-rom").val(number_rom);
         }
+        
+
+    
     </script>
 @endsection

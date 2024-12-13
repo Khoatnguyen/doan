@@ -4,8 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hotel;
+use App\Models\OrderHotel;
 use App\Models\Utilities;
 use App\Models\UtilityCategory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ManagerHotelController extends Controller
@@ -24,8 +26,8 @@ class ManagerHotelController extends Controller
             'description'=>'required',
             'small_description'=>'required',
             'address'=>'required',
-            'price_sale'=>'required',
-            'price_old'=>'required',
+            'price_sell'=>'required',
+            'price_ori'=>'required',
             'number_bed'=>'required',
             'view'=>'required',
             'note'=>'required',
@@ -34,8 +36,8 @@ class ManagerHotelController extends Controller
             'description.required'=>'Thiếu thông tin',
             'small_description.required'=>'Thiếu thông tin',
             'address.required'=>'Thiếu thông tin',
-            'price_sale.required'=>'Thiếu thông tin',
-            'price_old.required'=>'Thiếu thông tin',
+            'price_sell.required'=>'Thiếu thông tin',
+            'price_ori.required'=>'Thiếu thông tin',
             'number_bed.required'=>'Thiếu thông tin',
             'view.required'=>'Thiếu thông tin',
             'note.required'=>'Thiếu thông tin',
@@ -58,10 +60,11 @@ class ManagerHotelController extends Controller
             "description"=>$request->description,
             "address"=>$request->address,
             "small_description"=>$request->small_description,
-            "price_sale"=>$request->price_sale,
             'library_images'=>implode('|',$image) ,
-            "price_old"=>$request->price_old,
+            "price_ori"=>$request->price_ori,
+            "price_sell"=>$request->price_sell,
             "number_bed"=>$request->number_bed,
+            "status"=>1,
             "view"=>$request->view,
             "note"=>$request->note,
         );
@@ -96,9 +99,8 @@ class ManagerHotelController extends Controller
                 "description"=>$request->description,
                 "address"=>$request->address,
                 "small_description"=>$request->small_description,
-                "price_sale"=>$request->price_sale,
                 'library_images'=>implode('|',$image) ,
-                "price_old"=>$request->price_old,
+                "price_sell"=>$request->price_sell,
                 "numbers_bed"=>$request->numbers_bed,
                 "view"=>$request->view,
                 "note"=>$request->note,
@@ -197,6 +199,43 @@ class ManagerHotelController extends Controller
         }else{
             return 'Thêm tiện ích không thành công';
         }
+    }
+
+    //order-hotel
+    public function orderHotel(Request $request){
+        $request->validate([
+            'name_custom'=>'required',
+            'phone_custom'=>'required',
+            'email_custom'=>'required',
+        ],[
+            'name_custom.required'=>'Thiếu thông tin',
+            'phone_custom.required'=>'Thiếu thông tin',
+            'email_custom.required'=>'Thiếu thông tin',
+        ]);
+
+        $daterange = $request->input('daterange');
+        [$start_date, $end_date] = explode(' - ', $daterange);
+        $start_date = Carbon::createFromFormat('m/d/Y', trim($start_date))->format('Y-m-d');
+        $end_date = Carbon::createFromFormat('m/d/Y', trim($end_date))->format('Y-m-d');
+        $dataInput = array(
+            "hotel_id"=>$request->hotel_id,
+            "name_custom"=>$request->name_custom,
+            "phone_custom"=>$request->phone_custom,
+            "email_custom"=>$request->email_custom,
+            "adult_person"=>$request->number_adult,
+            "children_person"=>$request->number_children,
+            "number_rom"=>$request->number_rom,
+            "price_hotel"=>$request->price,
+            "price"=>$request->price * $request->number_rom,
+            "status"=>1,
+            "date_start"=>$start_date,
+            "date_end"=>$end_date,
+        );
+        $orderHotel = OrderHotel::create($dataInput);
+        if($orderHotel){
+            $orderHotel = OrderHotel::with('tour')->where('id',$request->hotel_id);
+        }
+
     }
     
 }

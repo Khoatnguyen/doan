@@ -4,6 +4,9 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ManagerHotelController;
 use App\Http\Controllers\admin\ManagerTourController;
 use App\Http\Controllers\admin\AdminUserController;
+use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\ReportController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentController;
@@ -56,8 +59,13 @@ Route::post('/pre-pay',[TourController::class,'prePayment'])->name('prePayment.t
 Route::get('/details-hotel',[HotelController::class,'getHotel'])->name('get.detail.hotel');
 
 Route::prefix('dashboard')->group(function () {
-    Route::get('/',[DashboardController::class,'index']);
+    Route::get('/',[DashboardController::class,'index'])->name('dasboard');
+    Route::get('admin/chart/data', [DashboardController::class, 'getChartData'])->name('admin.chart.data');
     //manager user
+    Route::get('/list-user',[AdminUserController::class,'index'])->name('get.list.user');
+    Route::get('/edit-user/{id}',[AdminUserController::class,'getEditUser'])->name('get.edit.user');
+    Route::post('/edit-user/{id}',[AdminUserController::class,'EditUser'])->name('post.edit.user');
+    //manager role
     Route::get('/list-role',[AdminUserController::class,'role'])->name('list.role');
     Route::get('/add-role',[AdminUserController::class,'getAddRole'])->name('get.add.role');
     Route::post('/add-role',[AdminUserController::class,'addRole'])->name('post.add.role');
@@ -74,8 +82,14 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/add-schedule/{id}',[ManagerTourController::class,'getAddSchedule'])->name('get.schedule');
     Route::post('/add-schedule/{id}',[ManagerTourController::class,'addSchedule'])->name('post.schedule');
     Route::get('/delete-schedule/{id}',[ManagerTourController::class,'deleteSchedule'])->name('manager.schedule.delete');
-
-    
+    Route::post('/search-order',[ManagerTourController::class,'searchOrder'])->name('search.order');
+    //schedule fee
+    Route::get('/list-schedule-fee/{id}',[ManagerTourController::class,'getScheduleFee'])->name('get.schedule.fee');
+    Route::get('/add-schedule-fee/{id}',[ManagerTourController::class,'getAddScheduleFee'])->name('get.add.schedule.fee');
+    Route::post('/add-schedule-fee',[ManagerTourController::class,'postAddScheduleFee'])->name('post.add.schedule.fee');
+    Route::get('/edit-schedule-fee/{id}',[ManagerTourController::class,'getEditScheduleFee'])->name('get.edit.schedule.fee');
+    Route::post('/edit-schedule-fee/{id}',[ManagerTourController::class,'postEditScheduleFee'])->name('post.edit.schedule.fee');
+ 
     //dashboard manager hotel
     Route::get('/manager-hotel',[ManagerHotelController::class,'index'])->name('get.list-hotel');
     Route::get('/add-hotel',[ManagerHotelController::class,'getAddHotel'])->name('get.add-hotel');
@@ -88,14 +102,31 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/add-utilities/{id}',[ManagerHotelController::class,'getAddUtilities'])->name('get.utilities');
     Route::post('/add-utilities/{id}',[ManagerHotelController::class,'AddUtilities'])->name('get.utilities');
     Route::get('/delete-utilities/{id}',[ManagerHotelController::class,'deleteUtilities'])->name('manager.utilities.delete');
+    //order hotel
+    Route::post('/order-hotel',[ManagerHotelController::class,'orderHotel'])->name('order.hotel');
     // add utilities category
     Route::get('/add-utilities-category',[ManagerHotelController::class,'getAddUtilitiCategory'])->name('get.utilities.category');
-    Route::post('/add-utilities-category',[ManagerHotelController::class,'creatUtilitiCategory'])->name('add.utilities.category');  
-    
+    Route::post('/add-utilities-category',[ManagerHotelController::class,'creatUtilitiCategory'])->name('add.utilities.category'); 
+    //order
+    Route::get('/list-order',[OrderController::class,'getList'])->name('get.list.order') ;
+    Route::get('/get-step-order/{id}',[OrderController::class,'getStepOrder'])->name('get.step.order');
+    Route::post('/get-step-order',[OrderController::class,'StepOrder'])->name('step.order');
+    //report 
+    Route::get('/list-debt',[ReportController::class,'getDebtReport'])->name('get.list.debt') ;
+    Route::post('/edit-debt',[ReportController::class,'editDebtReport'])->name('edit.list.debt') ;
+    Route::post('/search-debt',[ReportController::class,'searchDebt'])->name('search.debt');
+
+    Route::get('/expense-report',[ReportController::class,'listExpense'])->name('expense-report');
+    Route::post('/search-expense',[ReportController::class,'searchExpense'])->name('search.expense');
     });
 // payment
 Route::post('/vnpay_payment',[PaymentController::class,'payment_vnpay'])->name('payment.vnpay');
 Route::get('/payment/vnpay_return', [PaymentController::class, 'vnpayReturn'])->name('payment.vnpay.return');
 // Route::get('/return-success', [PaymentController::class, 'success'])->name('return.success');
+
+//export
+Route::get('/order-report-export', [ExportController::class, 'OrderExport'])->name('order-export');
+Route::get('/debt-report-export', [ExportController::class, 'DebtExport'])->name('debt-export');
+Route::get('/expense-report-export', [ExportController::class, 'ExpenseExport'])->name('expense-export');
 
 

@@ -39,7 +39,7 @@
               <span class="hide-menu">Home</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./index.html" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('dasboard')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
@@ -53,14 +53,14 @@
             <li class="sidebar-item sidebar-dropdown">
               <a class="sidebar-link" href="#" aria-expanded="false">
                 <span>
-                  <i class="ti ti-alert-circle"></i>
+                <i class="fa fa-sitemap" aria-hidden="true"></i>
                 </span>
                 <span class="hide-menu">Quản lý hệ thống</span>
               </a>
               <div class="sidebar-submenu">
                 <ul>
                   <li style="margin-left: 2rem;padding: 0.5rem">
-                    <a style="color:#000" href="">Quản lý tài khoản
+                    <a style="color:#000" href="{{route('get.list.user')}}">Quản lý tài khoản
                     </a>
                   </li>
                   <li style="margin-left: 2rem;padding: 0.5rem">
@@ -82,25 +82,33 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{route('get.list-hotel')}}" aria-expanded="false">
                 <span>
-                  <i class="ti ti-cards"></i>
+                <i class="fa fa-building-o" aria-hidden="true"></i>
                 </span>
                 <span class="hide-menu">Quản lý khách sạn</span>
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('get.list.order')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-file-description"></i>
                 </span>
-                <span class="hide-menu">Quản lý hóa đơn</span>
+                <span class="hide-menu">Báo cáo hóa đơn</span>
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('get.list.debt')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-typography"></i>
                 </span>
                 <span class="hide-menu">Báo cáo thống kê</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{route('expense-report')}}" aria-expanded="false">
+                <span>
+                <i class="fa fa-pie-chart" aria-hidden="true"></i>
+                </span>
+                <span class="hide-menu">Báo cáo chi phí</span>
               </a>
             </li>
             <li class="nav-small-cap">

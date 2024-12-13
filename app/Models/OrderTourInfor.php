@@ -22,6 +22,12 @@ class OrderTourInfor extends Model
         'payment_status',
         'payment',
         'number_person',    
+        'payment_supplier',    
+        'debt_supplier',    
     ];
-    
+    public function tour(){
+        return $this->hasOne(Tour::class,'id','tour_id');
+    }
+
+   
 }

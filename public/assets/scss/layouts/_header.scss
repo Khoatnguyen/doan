@@ -772,6 +772,12 @@ body {
 
 
       }
+      .compact{
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+      }
       .mt-4{
         margin-top: 2rem;
       }
@@ -2657,6 +2663,15 @@ body {
               font-weight: 600;
               line-height: 23px;
           }
+          .book{
+            background: #FF3366;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-left: 2rem;
+            padding: 1.5rem 3rem;
+            border-radius: 8px;
+        }
           .choose-number{
               padding-top: 2rem;
               #out {
@@ -2668,7 +2683,6 @@ body {
               }
               .choose-date{
                   border-radius: 8px;
-                  width: 25%;
                   border: 1px solid #CBD5E0;
                   text-align: center;
                   padding: 1.5rem;
@@ -2679,7 +2693,8 @@ body {
                       display: flex;
                       align-items: center;
                       border-radius: 8px;
-                      margin-left: 2rem;
+                      width: 100%;
+                      justify-content: center;
                       span{
                           font-size: 16px;
                           padding: 1rem;
@@ -2696,15 +2711,6 @@ body {
                           }
                       }
                   }
-              }
-              .book{
-                  background: #FF3366;
-                  color: #ffffff;
-                  font-size: 16px;
-                  font-weight: 600;
-                  margin-left: 2rem;
-                  padding: 1.5rem 3rem;
-                  border-radius: 8px;
               }
               .number{
                   min-width: 100px;

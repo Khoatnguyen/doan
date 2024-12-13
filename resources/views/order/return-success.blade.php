@@ -11,7 +11,7 @@
                     Chúc mừng bạn thanh toán thành công
                     </div>
                     <div class="info-name">
-                    Kilimanjaro - Se7en Summits Challenge - Chinh Phục Nóc nhà Châu Phi Thông Qua Lemosho
+                        {{$tour_detail->title}}
                     </div>
                     <div class="info-img">
                     <img width="100%" src="{{\Illuminate\Support\Facades\Storage::url($images[0])}}" alt="">

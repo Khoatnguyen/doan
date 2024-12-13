@@ -37,16 +37,16 @@
                                 @enderror
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
-                    <span>Giá sale:</span>
-                    <input type="text" class="price_sale" id="edit-price_sale" name="price_sale" value="" placeholder="Thêm giá sale">
-                    @error('price_sale')
+                    <span>Giá phòng:</span>
+                    <input type="text" class="price_ori" id="edit-price_ori" name="price_ori" value="" placeholder="Thêm giá phòng gốc">
+                    @error('price_ori')
                                 <span style="color: red">{{$message}}</span>
                                 @enderror
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Giá ban đầu:</span>
-                    <input type="text" class="price_old" id="edit-price_old" name="price_old" value="" placeholder="Thêm giá ban đầu">
-                    @error('price_old')
+                    <input type="text" class="price_sell" id="edit-price_sell" name="price_sell" value="" placeholder="Thêm giá bán">
+                    @error('price_sell')
                                 <span style="color: red">{{$message}}</span>
                                 @enderror
                 </div>

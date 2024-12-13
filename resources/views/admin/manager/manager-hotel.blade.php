@@ -1,6 +1,7 @@
 @extends('admin.layout.main')
 @section('content')
     <div class="container-fluid manager-hotel">
+        <h4>Quản lý khách sạn</h4>
         <button type="button" style="margin-bottom: 2rem" class="btn btn-primary"><a href="{{route('get.add-hotel')}}" style="color: #ffffff"> <i class="fa fa-plus" aria-hidden="true"></i></a></button>
         <div class="table-hotel" style="overflow-x: scroll">
             <table id="data-hotel" class="display table table-striped table-hover" cellspacing="0" width="100%">
@@ -27,8 +28,8 @@
                         <td>{{$item->description}}</td>
                         <td>{{$item->small_description}}</td>
                         <td>{{$item->address}}</td>
-                        <td>{{$item->price_sale}}</td>
-                        <td>{{$item->price_old}}</td>
+                        <td>{{$item->price_sell}}</td>
+                        <td>{{$item->price_ori}}</td>
                         <td>{{$item->number_bed}}</td>
                         <td>{{$item->view}}</td>
                         <td style="display: flex">

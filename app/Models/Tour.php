@@ -37,4 +37,9 @@ class Tour extends Model
     public function orderInfo(){
         return $this->hasOne(OrderTourInfor::class,'tour_id','id');
     }
+    
+    public function ScheduleFee(){
+        return $this->hasOne(ScheduleFee::class,'tour_id','id');
+    }
+
 }

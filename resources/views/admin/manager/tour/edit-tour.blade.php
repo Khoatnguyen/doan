@@ -2,32 +2,32 @@
 @section('content')
     <div class="container" style="padding-top: 8rem">
         <h4 style="padding-bottom: 2rem">Chỉnh sửa thông tin tour</h4>
-        <form action="{{route('post.edit-tour',$data->id)}}" method="post">
+        <form action="{{route('post.edit-tour',$data->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Tiêu đề:</span>
-                    <input type="text" class="title" id="edit-title" name="title" value=""
+                    <input type="text" class="form-control title" id="edit-title" name="title" value=""
                            placeholder="{{$data->title}}">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Giới thiệu:</span>
-                    <input type="text" class="description" id="edit-description" name="description" value=""
+                    <input type="text" class="form-control description" id="edit-description" name="description" value=""
                            placeholder="{{$data->description}}">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Khởi hành bao nhiêu ngày:</span>
-                    <input type="text" class="depart" id="edit-depart" name="depart" value=""
+                    <input type="text" class="form-control depart" id="edit-depart" name="depart" value=""
                            placeholder="{{$data->depart}}">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Giới thiệu nhỏ:</span>
-                    <input type="text" class="small-description" id="edit-small-description" name="small_description"
+                    <input type="text" class="form-control small-description" id="edit-small-description" name="small_description"
                            value="" placeholder="{{$data->small_description}}">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Số ngày đi:</span>
-                    <input type="text" class="time" id="edit-time" name="time" value="" placeholder="{{$data->time}}">
+                    <input type="text" class="form-control time" id="edit-time" name="time" value="" placeholder="{{$data->time}}">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Loại tour:</span>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Phương tiện:</span>
-                    <input type="text" class="vehicle" id="edit-vehicle" name="vehicle" value=""
+                    <input type="text" class="form-control vehicle" id="edit-vehicle" name="vehicle" value=""
                            placeholder="{{$data->vehicle}}">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
@@ -67,32 +67,32 @@
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Lưu ý:</span>
-                    <textarea id="edit-note" class="note" name="note" placeholder="Chỉnh sửa lưu ý">
+                    <textarea id="edit-note" class="form-control note" name="note" placeholder="Chỉnh sửa lưu ý">
                                 </textarea>
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Số người đi:</span>
-                    <input type="text" id="edit-number-person" class="number-person" name="number_person" value=""
+                    <input type="text" id="edit-number-person" class="form-control number-person" name="number_person" value=""
                            placeholder="{{$data->number_person}}">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Giá lịch trình:</span>
-                    <input type="text" id="edit-schedule" class="schedule-price" name="schedule_price" value=""
+                    <input type="text" id="edit-schedule" class="form-control schedule-price" name="schedule_price" value=""
                            placeholder="{{$data->schedule_price}}">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Giá:</span>
-                    <input type="text" id="edit-price" class="price" name="price" value=""
+                    <input type="text" id="edit-price" class="form-control price" name="price" value=""
                            placeholder="{{$data->price}}">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Ngày đi:</span>
-                    <input type="date" id="edit-date-start" class="date-start" name="date_start" value=""
+                    <input type="date" id="edit-date-start" class="form-control date-start" name="date_start" value=""
                            placeholder="Thêm ngày đi">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Ngày về:</span>
-                    <input type="date" id="edit-date-end" class="date-end" name="date_end" value=""
+                    <input type="date" id="edit-date-end" class="form-control date-end" name="date_end" value=""
                            placeholder="Thêm ngày về">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrderTourInfor;
+use App\Models\ScheduleFee;
 use App\Models\Schedules;
 use App\Models\Tour;
 use Illuminate\Console\Scheduling\Schedule;
@@ -35,7 +37,6 @@ class ManagerTourController extends Controller
             'number_person' => 'required',
             'include_price' => 'required',
             'none_include_price' => 'required',
-            'schedule' => 'required',
             'note' => 'required',
             'schedule_price' => 'required',
             'price' => 'required',
@@ -51,7 +52,6 @@ class ManagerTourController extends Controller
             'vehicle.required' => 'Phương tiện di chuyển không được để trống',
             'include_price.required' => 'Giá bao gồm không được để trống',
             'none_include_price.required' => 'Giá không bao gồm không được để trống',
-            'schedule.required' => 'Lịch trình không được để trống',
             'note.required' => 'Ghi chú không được để trống',
             'number_person.required' => 'Số người đi không được để trống',
             'schedule_price.required' => 'Giá lịch trình không được để trống',
@@ -216,5 +216,88 @@ class ManagerTourController extends Controller
         $datadelete->delete();
         return redirect()->to('dashboard/list-schedule/'.$test);
         
+    }
+    //schedule fee
+    public function getScheduleFee($id){
+        $listTour = Tour::where('id',$id)->with('ScheduleFee')->first();
+        return view('admin.manager.tour.schedule-fee.list-fee')->with([
+            'listTour'=>$listTour,
+        ]);
+    }
+    public function getAddScheduleFee($id){
+        $listTour = Tour::where('id',$id)->first();
+        return view('admin.manager.tour.schedule-fee.add-fee')->with([
+            'listTour'=>$listTour,
+        ]);
+    }
+    public function postAddScheduleFee(Request $request){
+        $integer = intval($request->tour_id);
+        $saveFee= new ScheduleFee();
+        $saveFee->tour_id = $integer;
+        $saveFee->airfare_fee = $request->airfare;
+        $saveFee->trans_fee = $request->trans_fee;
+        $saveFee->meal_fee = $request->meal_fee;
+        $saveFee->guide_fee = $request->guide_fee;
+        $saveFee->hotel_fee = $request->hotel_fee;
+        $saveFee->other_fee = $request->other_fee;
+        $saveFee->save();
+        $total= ($request->airfare)+($request->trans_fee)+($request->meal_fee)+($request->guide_fee)+($request->hotel_fee)+($request->other_fee);
+   
+        if($saveFee){
+            $updateTour = Tour::where('id',$request->tour_id); 
+            $dataInput= array(
+                'schedule_price'=>$total,
+                'price'=>$total*0.3,
+            );
+            $updateTour->update($dataInput);  
+            $listTour = Tour::where('id',$request->tour_id)->with('ScheduleFee')->first();
+            return view('admin.manager.tour.schedule-fee.list-fee')->with([
+                'listTour'=>$listTour,
+            ]);
+
+        }
+       
+    }
+    public function getEditScheduleFee($id){
+        $listFee = ScheduleFee::where('id',$id)->first();
+        return view('admin.manager.tour.schedule-fee.edit-fee')->with([
+            'listFee'=>$listFee,
+        ]);
+    }
+    public function postEditScheduleFee(Request $request,$id){
+        $saveFee = ScheduleFee::where('id',$id)->first();
+        $datainput = array(
+            'airfare_fee' => $request->airfare,
+            'trans_fee' => $request->trans_fee,
+            'meal_fee' => $request->meal_fee,
+            'guide_fee' => $request->guide_fee,
+            'hotel_fee' => $request->hotel_fee,
+            'other_fee' => $request->other_fee,
+        );
+        $saveFee->update($datainput);
+        $total= ($request->airfare)+($request->trans_fee)+($request->meal_fee)+($request->guide_fee)+($request->hotel_fee)+($request->other_fee);
+        if($saveFee){
+            $updateTour = Tour::where('id',$request->tour_id); 
+            $dataInput= array(
+                'schedule_price'=>$total,
+                'price'=>$total+$total*0.3,
+            );
+            $updateTour->update($dataInput);  
+            $listTour = Tour::where('id',$request->tour_id)->with('ScheduleFee')->first();
+            return view('admin.manager.tour.schedule-fee.list-fee')->with([
+                'listTour'=>$listTour,
+            ]);
+
+        }
+    }
+
+    public function searchOrder(Request $request){
+        $key = $request->key;
+        if ($request->ajax()) {
+            
+            $items = OrderTourInfor::with('tour')->where('tour_id', 'LIKE', '%' . $key . '%')->orwhere('order_id', 'LIKE', '%' . $key . '%')->orwhere('reservation_name', 'LIKE', '%' . $key . '%')->orwhere('reservation_phone', 'LIKE', '%' . $key . '%')->get();
+            $output = $items;
+            return Response($output);
+        }
     }
 }

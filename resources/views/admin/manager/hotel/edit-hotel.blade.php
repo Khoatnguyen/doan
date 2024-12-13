@@ -20,12 +20,12 @@
                     <input type="text" class="address" id="edit-address" name="address" value="" placeholder="{{$data->address}}">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
-                    <span>Giá sale:</span>
-                    <input type="text" class="price_sale" id="edit-price_sale" name="price_sale" value="" placeholder="{{$data->price_sale}}">
+                    <span>Giá gốc:</span>
+                    <input type="text" class="price_ori" id="edit-price_ori" name="price_ori" value="" placeholder="{{$data->price_ori}}">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
-                    <span>Giá ban đầu:</span>
-                    <input type="text" class="price_old" id="edit-price_old" name="price_old" value="" placeholder="{{$data->price_old}}">
+                    <span>Giá bán:</span>
+                    <input type="text" class="price_sell" id="edit-price_sell" name="price_sell" value="" placeholder="{{$data->price_sell}}">
                 </div>
                 <div class="col-md-4" style="display: grid;padding-top: 2rem">
                     <span>Thêm thư viện ảnh:</span>

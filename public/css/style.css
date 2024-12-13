@@ -16190,6 +16190,12 @@ body .body .hot-hotel #tab-four:checked ~ .tabs #tab-four-panel {
     border-bottom: 1px solid #ccc;
   }
 }
+body .body .compact {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
 body .body .mt-4 {
   margin-top: 2rem;
 }
@@ -17084,6 +17090,7 @@ body .return-succes .info-policy {
   gap: 16px;
   padding: 24px 32px;
   width: 100%;
+  margin-top: 40px;
 }
 body .return-succes .info-policy .header-policy {
   display: flex;
@@ -17836,6 +17843,15 @@ body .details-hotel .book-hotel span {
   font-weight: 600;
   line-height: 23px;
 }
+body .details-hotel .book-hotel .book {
+  background: #FF3366;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 2rem;
+  padding: 1.5rem 3rem;
+  border-radius: 8px;
+}
 body .details-hotel .book-hotel .choose-number {
   padding-top: 2rem;
 }
@@ -17844,7 +17860,6 @@ body .details-hotel .book-hotel .choose-number #out:focus #ccc {
 }
 body .details-hotel .book-hotel .choose-number .choose-date {
   border-radius: 8px;
-  width: 25%;
   border: 1px solid #CBD5E0;
   text-align: center;
   padding: 1.5rem;
@@ -17854,7 +17869,8 @@ body .details-hotel .book-hotel .choose-number .choose-quantity .dropdown-toggle
   display: flex;
   align-items: center;
   border-radius: 8px;
-  margin-left: 2rem;
+  width: 100%;
+  justify-content: center;
 }
 body .details-hotel .book-hotel .choose-number .choose-quantity .dropdown-toggle span {
   font-size: 16px;
@@ -17868,15 +17884,6 @@ body .details-hotel .book-hotel .choose-number .choose-quantity .dropdown-menu l
 }
 body .details-hotel .book-hotel .choose-number .choose-quantity .dropdown-menu li span {
   font-size: 16px;
-}
-body .details-hotel .book-hotel .choose-number .book {
-  background: #FF3366;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 600;
-  margin-left: 2rem;
-  padding: 1.5rem 3rem;
-  border-radius: 8px;
 }
 body .details-hotel .book-hotel .choose-number .number {
   min-width: 100px;

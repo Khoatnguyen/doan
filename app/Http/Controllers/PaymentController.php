@@ -47,6 +47,8 @@ class PaymentController extends Controller
     $saveOrder->status=0;
     $saveOrder->payment_status=1;
     $saveOrder->payment=$payment;
+    $saveOrder->payment_supplier=0;
+    $saveOrder->debt_supplier=0;
     $saveOrder->number_person=$number_adult;
     $saveOrder->save();   
 
@@ -56,7 +58,6 @@ class PaymentController extends Controller
         $vnp_Returnurl = route('payment.vnpay.return');
         $vnp_TmnCode = "9CJ9X2L5";//Mã website tại VNPAY 
         $vnp_HashSecret = "IL78X6OPBHRUD2222X9YHS7K4M87AL47"; //Chuỗi bí mật
-        
         $vnp_TxnRef = $code_cart; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này 
         $vnp_OrderInfo = "Thanh toán hóa đơn";
         $vnp_OrderType = "My Tour";

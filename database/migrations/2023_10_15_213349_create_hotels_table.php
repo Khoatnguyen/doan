@@ -19,8 +19,8 @@ class CreateHotelsTable extends Migration
             $table->longText('description');
             $table->text('small_description');
             $table->string('address');
-            $table->string('price_sale');
-            $table->string('price_old');
+            $table->string('price_ori');
+            $table->string('price_sell');
             $table->string('library_images');
             $table->bigInteger('number_bed');
             $table->integer('area');
